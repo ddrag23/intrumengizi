@@ -40,6 +40,12 @@
 <script src="<?= base_url(); ?>assets/gentelella/vendors/pdfmake/build/vfs_fonts.js"></script>
 <!-- Select2 -->
 <script src="<?= base_url(); ?>assets/gentelella/vendors/select2/dist/js/select2.full.min.js"></script>
+
+<script src="<?= base_url();?>assets/gentelella/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+<script src="<?= base_url();?>assets/gentelella/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+<script src="<?= base_url();?>assets/gentelella/vendors/google-code-prettify/src/prettify.js"></script>
+<script src="<?= base_url();?>assets/gentelella/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+
 <!-- Custom Theme Scripts -->
 <script src="<?= base_url(); ?>assets/gentelella/build/js/custom.min.js"></script>
 <script>
@@ -59,6 +65,16 @@
     $(document).ready(function() {
         $('#table_id').DataTable();
     });
+    $(document).ready(function(){
+      $('#select2').select2();
+    })
+    $(document).ready(function(){
+      $('#berat').tagsInput(
+        {
+          'width' : '100%'
+        }
+      );
+    })
 </script>
 </body>
 

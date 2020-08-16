@@ -16,15 +16,16 @@ class Pasien extends CI_Controller
         // print_r($this->session->userdata());
         // die();
         $data['pasien_gizi'] = $this->m_pasien->get()->result();
-        $data['nama_bahan'] = $this->m_pasien->get_nama_bahan()->result();
         // echo json_encode($data);
         // die();
         $data['src'] = 'account/listdata';
+        $data['title'] = 'Pasien';
         $this->load->view('layout/main', $data);
     }
     public function tambah()
     {
         $data['src'] = 'account/inputdata';
+        $data['title'] = 'Tambah Pasien';
         $data['bahan'] = $this->m_bahan->show()->result();
         $this->load->view('layout/main', $data);
     }
@@ -42,7 +43,6 @@ class Pasien extends CI_Controller
         $this->form_validation->set_rules('lemak', 'Lemak', 'trim|required');
         $this->form_validation->set_rules('protein', 'Protein', 'trim|required');
         $this->form_validation->set_rules('energi', 'Energi', 'trim|required');
-        $this->form_validation->set_rules('menu[]', 'Menu Makanan', 'trim|required');
         $this->form_validation->set_message('required', '{field} tidak boleh kosong');
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
         if ($this->form_validation->run() == false) {
@@ -61,12 +61,7 @@ class Pasien extends CI_Controller
                 'lemak' => $this->input->post('lemak'),
                 'protein' => $this->input->post('protein'),
                 'energi' => $this->input->post('energi'),
-                'menu' => $this->input->post('menu'),
-                'berat' => $this->input->post('bahan')
             );
-            echo json_encode($data);
-            die();
-
             if ($this->m_bahan->tambah($data) == true) {
                 $this->session->set_flashdata('tambah', true);
             } else {

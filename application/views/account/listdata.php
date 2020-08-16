@@ -1,5 +1,3 @@
-<div class="row">
-    <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
             <div class="x_title">
                 <h2>Form Perencanaan Menu Diet</h2>
@@ -38,5 +36,3 @@
                 </table>
             </div>
         </div>
-    </div>
-</div>

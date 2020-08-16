@@ -31,5 +31,6 @@
     <link href="<?= base_url(); ?>assets/gentelella/build/css/custom.min.css" rel="stylesheet">
     <!-- Select2 -->
     <!-- Select2 -->
+    <link href="<?= base_url();?>assets/gentelella/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/gentelella/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
 </head>

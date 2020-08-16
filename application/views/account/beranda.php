@@ -4,17 +4,13 @@
     <title>Daftar Bahan Makanan</title>
     <!-- jQuery -->
     <script src="<?= base_url(); ?>assets/gentelella/vendors/jquery/dist/jquery.min.js"></script>
-    <!-- jQuery Smart Wizard -->
-    <script src="<?= base_url(); ?>assets/gentelella/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
     <!-- Bootstrap -->
+    <link href="<?= base_url('assets/gentelella/');?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Font Awesome -->
     <link href="<?= base_url(); ?>assets/gentelella/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="<?= base_url(); ?>assets/gentelella/vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="<?= base_url(); ?>assets/gentelella/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
     <!-- Datatables -->
 
     <link href="<?= base_url(); ?>assets/gentelella/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -24,10 +20,23 @@
     <link href="<?= base_url(); ?>assets/gentelella/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="<?= base_url(); ?>assets/gentelella/build/css/custom.min.css" rel="stylesheet">
+    <style>
+        h1,
+        h2,
+        th,
+        td {
+            color: black;
+        }
+        .navbar-brand,.nav-item{
+          text-transform: uppercase;
+          color: white !important;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <div class="container">
         <a class="navbar-brand">Instrumen Teknologi</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -38,6 +47,7 @@
                 <a class="nav-item nav-link active" href="<?= base_url('login'); ?>">Login <span class="sr-only">(current)</span></a>
             </div>
         </div>
+      </div>
     </nav>
     <div class="right-col">
         <div class="container">
@@ -73,7 +83,7 @@
                                     <td><?php echo $u->kode ?></td>
                                     <td><?php echo $u->nama_bahan ?></td>
                                     <td><?php echo $u->sumber_bahan ?></td>
-                                    <td><a href="<?= site_url('beranda/detail/' . $u->kode) ?>">detail</a></td>
+                                    <td><a href="<?= site_url('beranda/detail/' . $u->kode) ?>" class="badge badge-warning">detail</a></td>
                             </tr>
                         <?php } ?>
                         </tbody>
@@ -115,24 +125,8 @@
 
     <!-- Custom Theme Scripts -->
     <script src="<?= base_url(); ?>assets/gentelella/build/js/custom.min.js"></script>
+    <script src="<?= base_url(); ?>assets/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('#example').DataTable();
-            responsive: true;
-            columnDefs: [{
-                    responsivePriority: 1,
-                    targets: 0
-                },
-                {
-                    responsivePriority: 2,
-                    targets: -1
-                }
-            ]
-        });
-        $(document).ready(function() {
-            $('#table_id').DataTable();
-        });
-    </script>
+   </script>
 </body>
-
 </html>

@@ -9,7 +9,6 @@ class Dashboard extends CI_Controller
         $this->simple_login->cek_login();
         // model menu
         $this->load->model('m_bahan');
-        $this->load->helper('url');
     }
 
     //Load Halaman dashboard
@@ -17,6 +16,7 @@ class Dashboard extends CI_Controller
     {
         $data['semua_menu'] = $this->m_bahan->show()->result();
         $data['src'] = 'account/v_dashboard';
+        $data['title'] = 'Dashboard';
         $this->load->view('layout/main', $data);
     }
 }

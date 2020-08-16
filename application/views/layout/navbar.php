@@ -23,15 +23,24 @@
                     <!-- sidebar menu -->
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section">
-                            <h3>Perencaan</h3>
+                            <h3>General</h3>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-edit"></i> Pasien <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="<?= base_url('pasien/tambah'); ?>">Form Perencanaan</a></li>
+                                        <li><a href="<?= base_url('pasien/tambah'); ?>">Tambah Perencanaan gizi</a></li>
                                         <li><a href="<?= base_url('pasien'); ?>">List Data Perencaan</a></li>
                                     </ul>
                                 </li>
                             </ul>
+                            <ul class="nav side-menu">
+                                <li><a><i class="fa fa-edit"></i> Bahan menu <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="<?= base_url('bahan/tambah'); ?>">Tambah bahan</a></li>
+                                        <li><a href="<?= base_url('bahan'); ?>">Daftar semua bahan</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
                         </div>
                         <?php if ($this->session->role == 'admin') : ?>
                             <div class="menu_section">
