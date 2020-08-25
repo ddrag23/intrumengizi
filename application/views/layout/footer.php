@@ -45,7 +45,6 @@
 <script src="<?= base_url();?>assets/gentelella/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
 <script src="<?= base_url();?>assets/gentelella/vendors/google-code-prettify/src/prettify.js"></script>
 <script src="<?= base_url();?>assets/gentelella/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
-
 <!-- Custom Theme Scripts -->
 <script src="<?= base_url(); ?>assets/gentelella/build/js/custom.min.js"></script>
 <script>

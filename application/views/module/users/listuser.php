@@ -1,5 +1,3 @@
-<div class="row">
-    <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
             <div class="btn btn-primary">
                 <a href="<?= base_url('pasien/tambah'); ?>" class="fa fa-plus" style="color: blanchedalmond;"> TAMBAH USER</a>
@@ -32,9 +30,8 @@
                                 <td><?php echo $u->email ?></td>
                                 <td><?= $u->role ?></td>
                                 <td>
-                                    <a href="" class="fa fa-power-off btn btn-danger"> Hapus</a>
-                                    <a href="" class="fa fa-print btn btn-primary"> Print</a>
-                                    <a href="" class="fa fa-info-circle btn btn-info"> Edit</a>
+                                <a href="<?= site_url('user/ubah/'.$u->id_user);?>" class="fa fa-info-circle btn btn-info"> Edit</a>
+                                <a href="<?= site_url('user/hapus/'.$u->id_user);?>" class="fa fa-power-off btn btn-danger"> Hapus</a>
                                 </td>
                         </tr>
                     <?php } ?>
@@ -42,5 +39,3 @@
                 </table>
             </div>
         </div>
-    </div>
-</div>

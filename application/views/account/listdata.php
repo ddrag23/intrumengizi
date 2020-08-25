@@ -15,23 +15,20 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $no = 1; foreach ($menu as $m) :?>
                         <tr>
-                            <?php
-                            $no = 1;
-                            foreach ($pasien_gizi as $u) {
-                            ?>
-                                <!-- <td><input type="checkbox" name=""></td> -->
                                 <td><?php echo $no++ ?></td>
-                                <td><?php echo $u->nama_lengkap ?></td>
-                                <td><?php echo $u->alamat ?></td>
-                                <td><?= $u->diagnosa_medis ?></td>
+                                <td><?php echo $m->nama_lengkap ?></td>
+                                <td><?php echo $m->alamat ?></td>
+                                <td><?= $m->diagnosa_medis ?></td>
                                 <td>
-                                    <a href="" class="fa fa-power-off btn btn-danger"> Hapus</a>
-                                    <a href="" class="fa fa-print btn btn-primary"> Print</a>
-                                    <a href="" class="fa fa-info-circle btn btn-info"> Edit</a>
+                                    <a href="" class="fa fa-power-off btn btn-danger">Edit</a>
+                                    <a href="" class="fa fa-print btn btn-primary">Hapus</a>
+
+                              <a href="<?=site_url('pasien/print/'.$m->id_menu);?>" class="fa fa-info-circle btn btn-info">Print</a>
                                 </td>
                         </tr>
-                    <?php } ?>
+                    <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

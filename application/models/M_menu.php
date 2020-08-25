@@ -3,9 +3,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_menu extends CI_Model
 {
-  public function get()
+  public function get($id = null)
   {
-    $this->db->get('menu_makanan');
+    $this->db->join('pasien_gizi', 'pasien_gizi.id = menu_makanan.pasien_id');
+    if (!empty($id)) {
+      return $this->db->get_where('menu_makanan',['id_menu' => $id]);
+    }else{
+      return $this->db->get('menu_makanan');
+    }
   }
 
   public function save($data)

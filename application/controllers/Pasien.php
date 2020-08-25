@@ -8,7 +8,7 @@ class Pasien extends CI_Controller
         parent::__construct();
         $this->simple_login->cek_login();
         // model menu
-        $this->load->model(['m_bahan', 'm_pasien']);
+        $this->load->model(['m_bahan', 'm_pasien','m_menu']);
         $this->load->helper('url');
     }
     public function index()
@@ -16,6 +16,7 @@ class Pasien extends CI_Controller
         // print_r($this->session->userdata());
         // die();
         $data['pasien_gizi'] = $this->m_pasien->get()->result();
+        $data['menu'] = $this->m_menu->get()->result();
         // echo json_encode($data);
         // die();
         $data['src'] = 'account/listdata';
@@ -69,5 +70,18 @@ class Pasien extends CI_Controller
             }
             redirect('pasien', 'refresh');
         }
+    }
+    public function delete($id)
+    {
+      $this->m_pasien->delete($id);
+      $this->session->set_flashdata('sukses','Data berhasil dihapus');
+      redirect('pasien', 'refresh');
+    }
+
+    public function print($id)
+    {
+      $data['row'] = $this->m_menu->get($id)->row();
+      $html = $this->load->view('module/laporan/v_laporanHitung',$data,true);
+      $this->fungsi->pdfPrint($html,'Laporan Hitung','A4','potrait');
     }
 }
