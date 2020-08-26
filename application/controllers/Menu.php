@@ -58,10 +58,10 @@ class Menu extends CI_Controller
           'nama_menu' => json_encode($menu),
           'nama_bahan' => json_encode($post['nama_bahan']),
           'berat' => json_encode($berat),
-          'energi' => json_encode($energi),
-          'protein' => json_encode($protein),
-          'karbohidrat' => json_encode($kh),
-          'lemak' => json_encode($lemak),
+          'energi_menu' => json_encode($energi),
+          'protein_menu' => json_encode($protein),
+          'karbohidrat_menu' => json_encode($kh),
+          'lemak_menu' => json_encode($lemak),
           'total' => json_encode($total),
           'pemenuhan_gizi' => json_encode($pemenuhan)
         ];
@@ -73,6 +73,59 @@ class Menu extends CI_Controller
         }
         redirect('pasien','refresh');
     }
+  }
+
+  public function detail($id)
+  {
+    $row = $this->m_menu->get($id)->row();
+      foreach (json_decode($row->nama_menu) as $mn => $m) {
+        $menu[$mn] = $m;
+          foreach (json_decode($row->nama_bahan) as $nb => $b) {
+            $bahan[$nb] = $b;
+            foreach (json_decode($row->berat) as $br => $b) {
+              $berat[$br] = $b;
+            }
+            foreach (json_decode($row->energi_menu) as $er => $e) {
+              $energi[$er] = $e;
+            }
+            foreach (json_decode($row->karbohidrat_menu) as $kh => $k) {
+              $karbohidrat[$kh] = $k;
+            }
+            foreach (json_decode($row->protein_menu) as $pr => $p) {
+              $protein[$pr] = $p;
+            }
+            foreach (json_decode($row->lemak_menu) as $lm => $l) {
+              $lemak[$lm] = $l;
+            }
+          }
+        }
+      for ($i = 0; $i < count($bahan); $i++) {
+        if (count($menu) < count($bahan)) {
+          array_push($menu," "," "," "," "," "," "," "," "," "," "," "," "," ");
+        }
+        $hasilBahan[$i] = [
+          'menu' => $menu[$i],
+          'bahan' => $bahan[$i],
+          'berat' => $berat[$i],
+          'karbohidrat' => $karbohidrat[$i],
+          'protein' => $protein[$i],
+          'lemak' => $lemak[$i],
+          'energi' => $energi[$i]
+        ];
+      }
+      $total = json_decode($row->total,true);
+      $pemenuhanGizi = json_decode($row->pemenuhan_gizi,true);
+      /* echo json_encode($hasilBahan); */
+      /* die(); */
+      $this->load->view('layout/main',[
+        'title' => 'Detail',
+        'src' => 'module/menu/v_detail',
+        'row' => $row,
+        'menu' => $hasilBahan,
+        'total' => $total,
+        'pemenuhanGizi' => $pemenuhanGizi
+      ]);
+
   }
 
   public function hapus()

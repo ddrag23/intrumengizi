@@ -60,29 +60,37 @@
                     <td>Protein(gram)</td>
                     <td>Energi(kkal)</td>
                 </tr>
+                  <?php foreach ($menu as $value): ?>
                   <tr>
-
+                      <td><?=$value['menu'];?></td>
+                      <td><?=$value['bahan'];?></td>
+                      <td><?=$value['berat'];?></td>
+                      <td><?=$value['energi'];?></td>
+                      <td><?=$value['karbohidrat'];?></td>
+                      <td><?=$value['protein'];?></td>
+                      <td><?=$value['lemak'];?></td>
                   </tr>
+                  <?php endforeach; ?>
                 <tr>
                     <td colspan="3">Total Energi dan Zat Gizi</td>
-                    <td>320</td>
-                    <td>170</td>
-                    <td>29</td>
-                    <td>22</td>
+                    <td><?= $total['kh'];?></td>
+                    <td><?= $total['lemak'];?></td>
+                    <td><?= $total['protein'];?></td>
+                    <td><?= $total['energi'];?></td>
                 </tr>
                 <tr>
                     <td colspan="3">Total Kebutuhan</td>
-                    <td>2000</td>
-                    <td>300</td>
-                    <td>50</td>
-                    <td>35</td>
+                    <td><?= $row->karbohidrat;?></td>
+                    <td><?= $row->lemak;?></td>
+                    <td><?= $row->protein;?></td>
+                    <td><?= $row->energi;?></td>
                 </tr>
                 <tr>
                     <td colspan="3">%Pemenuhan</td>
-                    <td>16%</td>
-                    <td>56%</td>
-                    <td>58%</td>
-                    <td>62%</td>
+                    <td><?= $pemenuhanGizi['totalKh'];?>%</td>
+                    <td><?= $pemenuhanGizi['totalLemak'];?>%</td>
+                    <td><?= $pemenuhanGizi['totalProtein'];?>%</td>
+                    <td><?= $pemenuhanGizi['totalEnergi'];?>%</td>
                 </tr>
             </table>
         </div>

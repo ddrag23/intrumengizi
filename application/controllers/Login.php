@@ -36,7 +36,7 @@ class Login extends CI_Controller
                     ];
                     $this->session->set_userdata($session);
                     $this->session->set_flashdata('sukses', 'selamat datang di instrumen tekonologi perencanaan menu diet');
-                    redirect('dashboard', 'refresh');
+                    redirect('pasien', 'refresh');
                 } else {
                     $this->session->set_flashdata('msg', 'password yang anda masukkan salah');
                     redirect('login', 'refresh');

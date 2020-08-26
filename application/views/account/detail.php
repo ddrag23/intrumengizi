@@ -149,7 +149,7 @@
             const submit = document.getElementById('bagi').value;
             for (let index = 0; index < array.length; index++) {
                 const tb = document.getElementById('mytable').rows[index].cells.item(array[index]);
-                tb.innerHTML /= submit;
+                tb.innerHTML *= submit / 100;
             }
         })
     </script>

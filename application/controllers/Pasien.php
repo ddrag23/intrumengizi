@@ -78,19 +78,53 @@ class Pasien extends CI_Controller
 
     public function print($id)
     {
-      $row = $this->m_menu->get($id)->row_array();
-      foreach (json_decode($row['nama_menu']) as $mn => $m) {
+      $row = $this->m_menu->get($id)->row();
+      foreach (json_decode($row->nama_menu) as $mn => $m) {
         $menu[$mn] = $m;
-          foreach (json_decode($row['nama_bahan']) as $nb => $b) {
+          foreach (json_decode($row->nama_bahan) as $nb => $b) {
             $bahan[$nb] = $b;
+            foreach (json_decode($row->berat) as $br => $b) {
+              $berat[$br] = $b;
+            }
+            foreach (json_decode($row->energi_menu) as $er => $e) {
+              $energi[$er] = $e;
+            }
+            foreach (json_decode($row->karbohidrat_menu) as $kh => $k) {
+              $karbohidrat[$kh] = $k;
+            }
+            foreach (json_decode($row->protein_menu) as $pr => $p) {
+              $protein[$pr] = $p;
+            }
+            foreach (json_decode($row->lemak_menu) as $lm => $l) {
+              $lemak[$lm] = $l;
+            }
           }
         }
       for ($i = 0; $i < count($bahan); $i++) {
-        $hasilBahan[$i] =['menu' => array_push($menu[$mn],"coba"), 'bahan' => $bahan[$i]];
+        if (count($menu) < count($bahan)) {
+          array_push($menu," "," "," "," "," "," "," "," "," "," "," "," "," ");
+        }
+        $hasilBahan[$i] = [
+          'menu' => $menu[$i],
+          'bahan' => $bahan[$i],
+          'berat' => $berat[$i],
+          'karbohidrat' => $karbohidrat[$i],
+          'protein' => $protein[$i],
+          'lemak' => $lemak[$i],
+          'energi' => $energi[$i]
+        ];
       }
-      echo json_encode($hasilBahan);
-      die();
-      /* $html = $this->load->view('module/laporan/v_laporanHitung',$data,true); */
-      /* $this->fungsi->pdfPrint($html,'Laporan Hitung','A4','potrait'); */
+      $total = json_decode($row->total,true);
+      $pemenuhanGizi = json_decode($row->pemenuhan_gizi,true);
+      /* echo json_encode($hasilBahan); */
+      /* die(); */
+      $data = [
+        'row' => $row,
+        'menu' => $hasilBahan,
+        'total' => $total,
+        'pemenuhanGizi' => $pemenuhanGizi
+      ];
+      $html = $this->load->view('module/laporan/v_laporanHitung',$data,true);
+      $this->fungsi->pdfPrint($html,'Laporan Hitung','A4','potrait');
     }
 }
