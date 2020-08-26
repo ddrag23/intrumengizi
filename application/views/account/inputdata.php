@@ -18,13 +18,13 @@
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="nama_lengkap">Nama Lengkap<span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="nama_lengkap"  class="form-control">
+                      <input type="text" name="nama_lengkap" id="nama_lengkap" class="form-control" value="<?= set_value('nama_lengkap');?>">
 											</div>
 										</div>
 										<div class="item form-group">
 											<label for="usia" class="col-form-label col-md-3 col-sm-3 label-align">Usia</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input id="usia" class="form-control" type="text" name="usia">
+                      <input id="usia" class="form-control" type="text" name="usia" value="<?= set_value('usia');?>">
 											</div>
 										</div>
 										<div class="item form-group">
@@ -44,55 +44,55 @@
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="alamat">Alamat <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-                          <textarea id="alamat" name="alamat" class="form-control" cols="30" rows="5"></textarea>
+                      <textarea id="alamat" name="alamat" class="form-control" cols="30" rows="5"><?=set_value('alamat');?></textarea>
 											</div>
 										</div>
 										<div class="item form-group">
 											<label for="tinggi_badan" class="col-form-label col-md-3 col-sm-3 label-align">Tinggi badan</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input id="tinggi_badan" class="form-control" type="text" name="tinggi_badan">
+                        <input id="tinggi_badan" class="form-control" type="text" name="tinggi_badan" value="<?=set_value('tinggi_badan');?>">
 											</div>
 										</div>
 										<div class="item form-group">
 											<label for="berat_badan" class="col-form-label col-md-3 col-sm-3 label-align">Berat badan</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input id="berat_badan" class="form-control" type="text" name="berat_badan">
+                      <input id="berat_badan" class="form-control" type="text" name="berat_badan" value="<?= set_value('berat_badan');?>">
 											</div>
 										</div>
 										<div class="item form-group">
 											<label for="pekerjaan" class="col-form-label col-md-3 col-sm-3 label-align">Pekerjaan</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input id="pekerjaan" class="form-control" type="text" name="pekerjaan">
+                      <input id="pekerjaan" class="form-control" type="text" name="pekerjaan" value="<?= set_value('pekerjaan');?>">
 											</div>
 										</div>
 										<div class="item form-group">
 											<label for="diagnosa_medis" class="col-form-label col-md-3 col-sm-3 label-align">Diagnosa medis</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input id="diagnosa_medis" class="form-control" type="text" name="diagnosa_medis">
+                      <input id="diagnosa_medis" class="form-control" type="text" name="diagnosa_medis" value="<?=set_value('diagnosa_medis');?>">
 											</div>
 										</div>
 										<div class="item form-group">
 											<label for="energi" class="col-form-label col-md-3 col-sm-3 label-align">Energi</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input id="energi" class="form-control" type="text" name="energi">
+                      <input id="energi" class="form-control" type="text" name="energi" value="<?= set_value('energi');?>">
 											</div>
 										</div>
 										<div class="item form-group">
 											<label for="karbohidrat" class="col-form-label col-md-3 col-sm-3 label-align">Karbohidrat</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input id="karbohidrat" class="form-control" type="text" name="karbohidrat">
+                      <input id="karbohidrat" class="form-control" type="text" name="karbohidrat" value="<?= set_value('karbohidrat');?>">
 											</div>
 										</div>
 										<div class="item form-group">
 											<label for="lemak" class="col-form-label col-md-3 col-sm-3 label-align">Lemak</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input id="lemak" class="form-control" type="text" name="lemak">
+                      <input id="lemak" class="form-control" type="text" name="lemak" value="<?= set_value('lemak');?>">
 											</div>
 										</div>
 										<div class="item form-group">
 											<label for="protein" class="col-form-label col-md-3 col-sm-3 label-align">Protein</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input id="protein" class="form-control" type="text" name="protein">
+                      <input id="protein" class="form-control" type="text" name="protein" value="<?=set_value('protein');?>">
 											</div>
 										</div>
 										<div class="ln_solid"></div>

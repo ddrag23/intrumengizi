@@ -63,12 +63,10 @@ class Pasien extends CI_Controller
                 'protein' => $this->input->post('protein'),
                 'energi' => $this->input->post('energi'),
             );
-            if ($this->m_bahan->tambah($data) == true) {
-                $this->session->set_flashdata('tambah', true);
-            } else {
-                $this->session->set_flashdata('tambah', false);
+            if ($this->m_pasien->save($data) == true) {
+                $this->session->set_flashdata('sukses', 'data berhasil ditambahkan');
             }
-            redirect('pasien', 'refresh');
+            redirect('menu', 'refresh');
         }
     }
     public function delete($id)
@@ -80,8 +78,19 @@ class Pasien extends CI_Controller
 
     public function print($id)
     {
-      $data['row'] = $this->m_menu->get($id)->row();
-      $html = $this->load->view('module/laporan/v_laporanHitung',$data,true);
-      $this->fungsi->pdfPrint($html,'Laporan Hitung','A4','potrait');
+      $row = $this->m_menu->get($id)->row_array();
+      foreach (json_decode($row['nama_menu']) as $mn => $m) {
+        $menu[$mn] = $m;
+          foreach (json_decode($row['nama_bahan']) as $nb => $b) {
+            $bahan[$nb] = $b;
+          }
+        }
+      for ($i = 0; $i < count($bahan); $i++) {
+        $hasilBahan[$i] =['menu' => array_push($menu[$mn],"coba"), 'bahan' => $bahan[$i]];
+      }
+      echo json_encode($hasilBahan);
+      die();
+      /* $html = $this->load->view('module/laporan/v_laporanHitung',$data,true); */
+      /* $this->fungsi->pdfPrint($html,'Laporan Hitung','A4','potrait'); */
     }
 }

@@ -60,12 +60,9 @@
                     <td>Protein(gram)</td>
                     <td>Energi(kkal)</td>
                 </tr>
-                  <?php foreach (json_decode($row->nama_menu) as $m => $menu): ?>
-                <tr>
-                    <td><?=$menu?></td>
-                </tr>
-                  <?php endforeach; ?>
+                  <tr>
 
+                  </tr>
                 <tr>
                     <td colspan="3">Total Energi dan Zat Gizi</td>
                     <td>320</td>

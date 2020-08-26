@@ -18,5 +18,10 @@ class M_menu extends CI_Model
     $this->db->insert('menu_makanan',$data);
     return ($this->db->affected_rows() > 0) ? true : false;
   }
+
+  public function delete($id)
+  {
+    $this->db->delete('menu_makanan',['id_menu' => $id]);
+  }
 }
 

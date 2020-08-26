@@ -10,4 +10,15 @@ class M_pasien extends CI_Model
       }
     }
 
+    public function save($data)
+    {
+      $this->db->insert('pasien_gizi',$data);
+      return ($this->db->affected_rows() > 0 ? true : false);
+    }
+
+    public function delete($id)
+    {
+      $this->db->delete('pasien_gizi',['id' => $id]);
+    }
+
 }
