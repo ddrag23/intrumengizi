@@ -7,21 +7,26 @@ class M_menu extends CI_Model
   {
     $this->db->join('pasien_gizi', 'pasien_gizi.id = menu_makanan.pasien_id');
     if (!empty($id)) {
-      return $this->db->get_where('menu_makanan',['id_menu' => $id]);
-    }else{
+      return $this->db->get_where('menu_makanan', ['id_menu' => $id]);
+    } else {
       return $this->db->get('menu_makanan');
     }
   }
 
   public function save($data)
   {
-    $this->db->insert('menu_makanan',$data);
+    $this->db->insert('menu_makanan', $data);
+    return ($this->db->affected_rows() > 0) ? true : false;
+  }
+
+  public function update($id, $data)
+  {
+    $this->db->update('menu_makanan', $data, ['id_menu' => $id]);
     return ($this->db->affected_rows() > 0) ? true : false;
   }
 
   public function delete($id)
   {
-    $this->db->delete('menu_makanan',['id_menu' => $id]);
+    $this->db->delete('menu_makanan', ['id_menu' => $id]);
   }
 }
-
