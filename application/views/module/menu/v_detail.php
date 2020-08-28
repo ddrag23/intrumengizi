@@ -6,7 +6,7 @@
                     </li>
                   <li><a class="badge badge-primary ml-2 text-white" href="<?= site_url('pasien/ubah/'.$row->id);?>"><i class="fa fa-pencil"></i> Edit Pasien</a>
 										</li>
-                  <li><a class="badge badge-primary ml-2 text-white" href="<?= site_url('menu/edit/'.$this->uri->segment(3));?>"><i class="fa fa-pencil"></i> Edit Menu</a>
+                  <li><a class="badge badge-primary ml-2 text-white" href="<?= site_url('menu/ubah/'.$this->uri->segment(3));?>"><i class="fa fa-pencil"></i> Edit Menu</a>
 										</li>
 
 									</ul>
