@@ -86,9 +86,11 @@ class Pasien extends CI_Controller
         $this->form_validation->set_rules('energi', 'Energi', 'trim|required');
         $this->form_validation->set_message('required', '{field} tidak boleh kosong');
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger" role="alert">', '</div>');
+
+        $row = $this->m_menu->getForPasien($id)->row();
+
         if($this->form_validation->run() == FALSE){
           $query = $this->m_pasien->get($id);
-          $row = $this->m_menu->getForPasien($id)->row();
           if ($query->num_rows() > 0) {
             $this->load->view('layout/main',[
               'title' => 'Ubah Data Pasien',
@@ -115,7 +117,6 @@ class Pasien extends CI_Controller
             'energi' => $this->input->post('energi'),
           ];
           $update = $this->m_pasien->update($id,$data);
-
           if ($update) {
             $this->session->set_flashdata('sukses','Data pasien berhasil diubah');
           }
