@@ -1,17 +1,23 @@
-<style>
-</style>
         <div class="x_panel">
             <div class="x_title">
                 <h2>Form Perencanaan Menu Diet</h2>
 									<ul class="nav navbar-right panel_toolbox">
                   <li><a class="badge badge-primary text-white" href="<?= site_url('pasien');?>"><i class="fa fa-arrow-left"></i> Kembali</a>
                     </li>
-                  <li><a class="badge badge-primary ml-2 text-white" href="<?= site_url('menu/edit/'.$this->uri->segment(3));?>"><i class="fa fa-pencil"></i> Edit</a>
+                  <li><a class="badge badge-primary ml-2 text-white" href="<?= site_url('pasien/ubah/'.$row->id);?>"><i class="fa fa-pencil"></i> Edit Pasien</a>
 										</li>
+                  <li><a class="badge badge-primary ml-2 text-white" href="<?= site_url('menu/edit/'.$this->uri->segment(3));?>"><i class="fa fa-pencil"></i> Edit Menu</a>
+										</li>
+
 									</ul>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
+        <?php if ($this->session->flashdata('sukes')): ?>
+          <div class="alert alert-success" role="alert">
+              <?= $this->session->flashdata('sukses');?>
+          </div>
+        <?php endif; ?>
         <div class="col-md-12 col-sm-12 col-xs-12">
             <table class="table">
               <tr>

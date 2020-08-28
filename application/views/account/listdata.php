@@ -9,7 +9,7 @@
                     <?= $this->session->flashdata('sukses');?>
                 </div>
               <?php endif; ?>
-                <table class="table table-striped table-bordered" style="width:100%">
+                <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -27,9 +27,10 @@
                                 <td><?php echo $m->alamat ?></td>
                                 <td><?= $m->diagnosa_medis ?></td>
                                 <td>
-                                <a href="<?= site_url('menu/ubah/'.$m->id_menu);?>" class="fa fa-power-off btn btn-danger">Edit</a>
-                                    <a href="<?= site_url('menu/detail/'.$m->id_menu);?>" class="fa fa-eye btn btn-warning">detail</a>
-                                    <a href="<?=site_url('pasien/print/'.$m->id_menu);?>" class="fa fa-info-circle btn btn-info">Print</a>
+                                <a href="<?= site_url('pasien/ubah/'.$m->id);?>" class="fa fa-power-off btn btn-primary"> Edit Pasien</a>
+                                <a href="<?= site_url('menu/ubah/'.$m->id_menu);?>" class="fa fa-power-off btn btn-success"> Edit Menu</a>
+                                    <a href="<?= site_url('menu/detail/'.$m->id_menu);?>" class="fa fa-eye btn btn-info"> Detail</a>
+                                    <a href="<?=site_url('pasien/print/'.$m->id_menu);?>" class="fa fa-print btn btn-warning"> Print</a>
                                     <a href="#modal-hapus" class="fa fa-trash btn btn-danger" data-toggle="modal"> Hapus</a>
                                 </td>
                         </tr>

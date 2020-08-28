@@ -66,12 +66,13 @@ class Menu extends CI_Controller
         'pemenuhan_gizi' => json_encode($pemenuhan)
       ];
       $save = $this->m_menu->save($data);
+      $id = $this->db->insert_id();
       /* echo json_encode($data); */
       /* die(); */
       if ($save) {
         $this->session->set_flashdata('sukses', 'data berhasil ditambahkan');
       }
-      redirect('pasien', 'refresh');
+      redirect('menu/detail/'.$id, 'refresh');
     }
   }
 
@@ -129,13 +130,73 @@ class Menu extends CI_Controller
 
   public function ubah($id)
   {
-    $this->load->view('layout/main', [
-      'title' => 'Ubah data',
-      'src' => 'module/menu/v_edit',
-      'row' => $this->m_menu->get($id)->row(),
-      'bahan' => $this->m_bahan->show()->result(),
-      'pasien' => $this->m_pasien->get()->result()
-    ]);
+    $this->form_validation->set_rules('pasien_id', 'Nama Pasien', 'required');
+    $this->form_validation->set_rules('nama_menu', 'Nama Menu', 'required');
+    $this->form_validation->set_rules('nama_bahan[]', 'Bahan Makanan', 'required');
+    $this->form_validation->set_rules('berat', 'Berat', 'required');
+    if($this->form_validation->run() == FALSE){
+      $query = $this->m_menu->get($id);
+      if ($query->num_rows() > 0) {
+        $this->load->view('layout/main', [
+          'title' => 'Ubah data',
+          'src' => 'module/menu/v_edit',
+          'row' => $query->row(),
+          'bahan' => $this->m_bahan->show()->result(),
+          'pasien' => $this->m_pasien->get()->result()
+        ]);
+      } else {
+        show_404();
+      }
+    }else{
+      $post = $this->input->post(null, true);
+      $bahan = $this->m_bahan->show()->result();
+      $kebutuhan = $this->m_pasien->get()->result();
+      $berat = explode(",", $post['berat']);
+      $menu = explode(",", $post['nama_menu']);
+      $energi = [];
+      $protein = [];
+      $lemak = [];
+      $kh = [];
+      foreach ($bahan as $b) {
+        foreach ($post['nama_bahan'] as $p) {
+          if ($b->nama_bahan == $p) {
+            foreach ($berat as $key => $value) {
+              $energi[$key] = $b->energi * intval($value) / 100;
+              $protein[$key] = $b->protein * intval($value) / 100;
+              $kh[$key] = $b->kh * intval($value) / 100;
+              $lemak[$key] = $b->lemak * intval($value) / 100;
+            }
+          }
+        }
+      }
+      $total = ['energi' => array_sum($energi), 'protein' => array_sum($protein), 'kh' => array_sum($kh), 'lemak' => array_sum($lemak)];
+      foreach ($kebutuhan as $k) {
+        $pemenuhan = [
+          'totalEnergi' => $total['energi'] / $k->energi * 100,
+          'totalProtein' => $total['protein'] / $k->protein * 100,
+          'totalKh' => $total['kh'] / $k->karbohidrat * 100,
+          'totalLemak' => $total['lemak'] / $k->lemak * 100
+        ];
+      }
+      $data = [
+        'pasien_id' => $post['pasien_id'],
+        'nama_menu' => json_encode($menu),
+        'nama_bahan' => json_encode($post['nama_bahan']),
+        'berat' => json_encode($berat),
+        'energi_menu' => json_encode($energi),
+        'protein_menu' => json_encode($protein),
+        'karbohidrat_menu' => json_encode($kh),
+        'lemak_menu' => json_encode($lemak),
+        'total' => json_encode($total),
+        'pemenuhan_gizi' => json_encode($pemenuhan)
+      ];
+      /* echo json_encode($data);die(); */
+      $update = $this->m_menu->update($id,$data);
+      if ($update) {
+        $this->session->set_flashdata('sukses','Data berhasil diubah');
+      }
+      redirect('menu/detail/'.$id);
+    }
   }
 
   public function hapus()

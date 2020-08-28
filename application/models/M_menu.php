@@ -13,6 +13,13 @@ class M_menu extends CI_Model
     }
   }
 
+  public function getForPasien($id)
+  {
+    $this->db->join('pasien_gizi', 'pasien_gizi.id = menu_makanan.pasien_id');
+    return $this->db->get_where('menu_makanan',['pasien_id' => $id]);
+
+  }
+
   public function save($data)
   {
     $this->db->insert('menu_makanan', $data);
