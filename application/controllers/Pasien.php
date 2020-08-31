@@ -23,6 +23,7 @@ class Pasien extends CI_Controller
         $data['title'] = 'Pasien';
         $this->load->view('layout/main', $data);
     }
+
     public function tambah()
     {
         $data['src'] = 'account/inputdata';

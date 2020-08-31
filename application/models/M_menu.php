@@ -34,6 +34,9 @@ class M_menu extends CI_Model
 
   public function delete($id)
   {
-    $this->db->delete('menu_makanan', ['id_menu' => $id]);
+    $this->db->trans_start();
+    $this->db->delete('menu_makanan', ['pasien_id' => $id]);
+    $this->db->delete('pasien_gizi', ['id' => $id]);
+    $this->db->trans_complete();
   }
 }

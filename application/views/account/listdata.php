@@ -31,7 +31,7 @@
                                 <a href="<?= site_url('menu/ubah/'.$m->id_menu);?>" class="fa fa-power-off btn btn-success"> Edit Menu</a>
                                     <a href="<?= site_url('menu/detail/'.$m->id_menu);?>" class="fa fa-eye btn btn-info"> Detail</a>
                                     <a href="<?=site_url('pasien/print/'.$m->id_menu);?>" class="fa fa-print btn btn-warning"> Print</a>
-                                    <a href="#modal-hapus" class="fa fa-trash btn btn-danger" data-toggle="modal"> Hapus</a>
+                                    <a href="#" class="fa fa-trash btn btn-danger deleted" data-toggle="modal" data-id="<?= $m->id;?>"> Hapus</a>
                                 </td>
                         </tr>
                     <?php endforeach; ?>
@@ -53,8 +53,7 @@
       <div class="modal-body">
         <h4>Yakin ingin menghapus data ?</h4>
       <form action="<?= site_url('menu/hapus')?>" method="post">
-        <input type="hidden" name="id_menu" value="<?= $m->id_menu;?>">
-        <input type="hidden" name="id" value="<?= $m->id;?>">
+          <input type="text" name="id" id="id">
     </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
@@ -64,3 +63,13 @@
     </div>
   </div>
 </div>
+
+<script>
+$(document).ready(function(){
+  $('.deleted').on('click',function(){
+    let id = $(this).data('id');
+    $('#modal-hapus').modal('show');
+    $('[name="id"]').val(id);
+  })
+})
+</script>

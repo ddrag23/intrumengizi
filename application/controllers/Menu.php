@@ -202,8 +202,7 @@ class Menu extends CI_Controller
   public function hapus()
   {
     $post = $this->input->post(null, true);
-    $this->m_pasien->delete($post['id']);
-    $this->m_menu->delete($post['id_menu']);
+    $this->m_menu->delete($post['id']);
     redirect('pasien', 'refresh');
   }
 }
