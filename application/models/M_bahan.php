@@ -58,7 +58,7 @@ class M_bahan extends CI_Model
     {
         return  $this->db->get_where('semua_menu', ['kode' => $kode])->row();
     }
-    public function tambah($data)
+    public function save($data)
     {
         $this->db->insert('semua_menu', $data);
         return ($this->db->affected_rows() > 0) ? TRUE : FALSE;

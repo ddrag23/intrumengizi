@@ -53,7 +53,7 @@
       <div class="modal-body">
         <h4>Yakin ingin menghapus data ?</h4>
       <form action="<?= site_url('menu/hapus')?>" method="post">
-          <input type="text" name="id" id="id">
+          <input type="hidden" name="id" id="id">
     </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>

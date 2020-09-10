@@ -25,7 +25,7 @@ class Menu extends CI_Controller
     } else {
       $post = $this->input->post(null, true);
       $bahan = $this->m_bahan->show()->result();
-      $kebutuhan = $this->m_pasien->get()->result();
+      $kebutuhan = $this->m_pasien->get($post['pasien_id'])->result();
       $berat = explode(",", $post['berat']);
       $menu = explode(",", $post['nama_menu']);
       $energi = [];
@@ -33,13 +33,15 @@ class Menu extends CI_Controller
       $lemak = [];
       $kh = [];
       foreach ($bahan as $b) {
-        foreach ($post['nama_bahan'] as $p) {
-          if ($b->nama_bahan == $p) {
+        foreach ($post['nama_bahan'] as $k => $p) {
+          if ($b->nama_bahan === $p) {
             foreach ($berat as $key => $value) {
-              $energi[$key] = $b->energi * intval($value) / 100;
-              $protein[$key] = $b->protein * intval($value) / 100;
-              $kh[$key] = $b->kh * intval($value) / 100;
-              $lemak[$key] = $b->lemak * intval($value) / 100;
+              if ($key == $k) {
+                $energi[$key] = $b->energi * intval($value) / 100;
+                $protein[$key] = $b->protein * intval($value) / 100;
+                $kh[$key] = $b->kh * intval($value) / 100;
+                $lemak[$key] = $b->lemak * intval($value) / 100;
+              }
             }
           }
         }
@@ -53,6 +55,8 @@ class Menu extends CI_Controller
           'totalLemak' => $total['lemak'] / $k->lemak * 100
         ];
       }
+      /* echo json_encode($pemenuhan); */
+      /* die(); */
       $data = [
         'pasien_id' => $post['pasien_id'],
         'nama_menu' => json_encode($menu),
@@ -67,8 +71,6 @@ class Menu extends CI_Controller
       ];
       $save = $this->m_menu->save($data);
       $id = $this->db->insert_id();
-      /* echo json_encode($data); */
-      /* die(); */
       if ($save) {
         $this->session->set_flashdata('sukses', 'data berhasil ditambahkan');
       }
@@ -150,7 +152,7 @@ class Menu extends CI_Controller
     }else{
       $post = $this->input->post(null, true);
       $bahan = $this->m_bahan->show()->result();
-      $kebutuhan = $this->m_pasien->get()->result();
+      $kebutuhan = $this->m_pasien->get($post['pasien_id'])->result();
       $berat = explode(",", $post['berat']);
       $menu = explode(",", $post['nama_menu']);
       $energi = [];
@@ -158,13 +160,15 @@ class Menu extends CI_Controller
       $lemak = [];
       $kh = [];
       foreach ($bahan as $b) {
-        foreach ($post['nama_bahan'] as $p) {
-          if ($b->nama_bahan == $p) {
+        foreach ($post['nama_bahan'] as $k => $p) {
+          if ($b->nama_bahan === $p) {
             foreach ($berat as $key => $value) {
-              $energi[$key] = $b->energi * intval($value) / 100;
-              $protein[$key] = $b->protein * intval($value) / 100;
-              $kh[$key] = $b->kh * intval($value) / 100;
-              $lemak[$key] = $b->lemak * intval($value) / 100;
+              if ($key == $k) {
+                $energi[$key] = $b->energi * intval($value) / 100;
+                $protein[$key] = $b->protein * intval($value) / 100;
+                $kh[$key] = $b->kh * intval($value) / 100;
+                $lemak[$key] = $b->lemak * intval($value) / 100;
+              }
             }
           }
         }
@@ -178,6 +182,8 @@ class Menu extends CI_Controller
           'totalLemak' => $total['lemak'] / $k->lemak * 100
         ];
       }
+      /* echo json_encode($pemenuhan); */
+      /* die(); */
       $data = [
         'pasien_id' => $post['pasien_id'],
         'nama_menu' => json_encode($menu),

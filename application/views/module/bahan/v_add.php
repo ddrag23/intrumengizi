@@ -44,6 +44,13 @@
 											</div>
 										</div>
 										<div class="item form-group">
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="nama_bahan">Sumber Makanan <span class="required">*</span>
+											</label>
+											<div class="col-md-6 col-sm-6 ">
+												<input type="text" id="sumber_makanan" name="sumber_makanan" class="form-control">
+											</div>
+										</div>
+										<div class="item form-group">
 											<label for="air" class="col-form-label col-md-3 col-sm-3 label-align">Air</label>
 											<div class="col-md-6 col-sm-6 ">
 												<input id="air" class="form-control" type="text" name="air">
@@ -92,6 +99,12 @@
 											</div>
 										</div>
 										<div class="item form-group">
+											<label for="fosfor" class="col-form-label col-md-3 col-sm-3 label-align">Fosfor</label>
+											<div class="col-md-6 col-sm-6 ">
+												<input id="fosfor" class="form-control" type="text" name="fosfor">
+											</div>
+										</div>
+										<div class="item form-group">
 											<label for="besi" class="col-form-label col-md-3 col-sm-3 label-align">Besi</label>
 											<div class="col-md-6 col-sm-6 ">
 												<input id="besi" class="form-control" type="text" name="besi">
@@ -137,6 +150,12 @@
 											<label for="karbototal" class="col-form-label col-md-3 col-sm-3 label-align">Karbohidrat Total</label>
 											<div class="col-md-6 col-sm-6 ">
 												<input id="karbototal" class="form-control" type="text" name="karbototal">
+											</div>
+										</div>
+										<div class="item form-group">
+											<label for="thiamin" class="col-form-label col-md-3 col-sm-3 label-align">Thiamin</label>
+											<div class="col-md-6 col-sm-6 ">
+												<input id="thiamin" class="form-control" type="text" name="thiamin">
 											</div>
 										</div>
 										<div class="item form-group">

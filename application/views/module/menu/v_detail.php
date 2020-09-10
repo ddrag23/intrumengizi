@@ -59,7 +59,7 @@
               <tr>
                 <td>Karbohidrat</td>
                 <td>:</td>
-                <td><?= $row->energi;?></td>
+                <td><?= $row->karbohidrat;?></td>
               </tr>
               <tr>
                 <td>Lemak</td>
@@ -92,10 +92,10 @@
                 </tr>
                 <tr>
                     <td>Berat(gram)</td>
+                    <td>Energi(gram)</td>
                     <td>Karbohidrat(gram)</td>
-                    <td>lemak(gram)</td>
                     <td>Protein(gram)</td>
-                    <td>Energi(kkal)</td>
+                    <td>Lemak(kkal)</td>
                 </tr>
                   <?php foreach ($menu as $value): ?>
                   <tr>
@@ -110,24 +110,24 @@
                   <?php endforeach; ?>
                 <tr>
                     <td colspan="3">Total Energi dan Zat Gizi</td>
-                    <td><?= number_format($total['kh'],2,',',' ');?></td>
-                    <td><?= number_format($total['lemak'],2,',',' ');?></td>
-                    <td><?= number_format($total['protein'],2,',',' ');?></td>
                     <td><?= number_format($total['energi'],2,',',' ');?></td>
+                    <td><?= number_format($total['kh'],2,',',' ');?></td>
+                    <td><?= number_format($total['protein'],2,',',' ');?></td>
+                    <td><?= number_format($total['lemak'],2,',',' ');?></td>
                 </tr>
                 <tr>
                     <td colspan="3">Total Kebutuhan</td>
-                    <td><?= $row->karbohidrat;?></td>
-                    <td><?= $row->lemak;?></td>
-                    <td><?= $row->protein;?></td>
                     <td><?= $row->energi;?></td>
+                    <td><?= $row->karbohidrat;?></td>
+                    <td><?= $row->protein;?></td>
+                    <td><?= $row->lemak;?></td>
                 </tr>
                 <tr>
                     <td colspan="3">%Pemenuhan</td>
-                    <td><?= number_format($pemenuhanGizi['totalKh'],2,',',' ');?>%</td>
-                    <td><?= number_format($pemenuhanGizi['totalLemak'],2,',',' ');?>%</td>
-                    <td><?= number_format($pemenuhanGizi['totalProtein'],2,',',' ');?>%</td>
                     <td><?= number_format($pemenuhanGizi['totalEnergi'],2,',',' ');?>%</td>
+                    <td><?= number_format($pemenuhanGizi['totalKh'],2,',',' ');?>%</td>
+                    <td><?= number_format($pemenuhanGizi['totalProtein'],2,',',' ');?>%</td>
+                    <td><?= number_format($pemenuhanGizi['totalLemak'],2,',',' ');?>%</td>
                 </tr>
             </table>
         </div>

@@ -61,7 +61,7 @@ class Bahan extends CI_Controller
       $this->form_validation->set_rules('air','Kandungan Air','required');
       $this->form_validation->set_rules('energi','Kandungan Energi','required');
       $this->form_validation->set_rules('lemak','Kandungan Lemak','required');
-      $this->form_validation->set_rules('Protein','Kandungan Protein','required');
+      $this->form_validation->set_rules('protein','Kandungan Protein','required');
       $this->form_validation->set_rules('kh','Kandungan Karbohidrat','required');
       $this->form_validation->set_rules('serat','Kandungan Serat','required');
       $this->form_validation->set_rules('abu','Kandungan Abu','required');
@@ -76,7 +76,7 @@ class Bahan extends CI_Controller
       $this->form_validation->set_rules('bkar','Kandungan B Kar','required');
       $this->form_validation->set_rules('karbototal','Kandungan Karbohidrat Total','required');
       $this->form_validation->set_rules('thiamin','Kandungan Thiamin','required');
-      $this->form_validation->set_rules('ribowflavin','Kandungan Riboflavin','required');
+      $this->form_validation->set_rules('riboflavin','Kandungan Riboflavin','required');
       $this->form_validation->set_rules('niasin','Kandungan niasin','required');
       $this->form_validation->set_rules('vitc','Kandungan Vitamin C','required');
       $this->form_validation->set_rules('bdd','Kandungan BDD','required');
@@ -100,6 +100,7 @@ class Bahan extends CI_Controller
           'serat' => $post['serat'],
           'abu' => $post['abu'],
           'kalsium' => $post['kalsium'],
+          'fosfor' => $post['fosfor'],
           'besi' => $post['besi'],
           'natrium' => $post['natrium'],
           'kalium' => $post['kalium'],
